@@ -1,4 +1,4 @@
-# Loan Default Risk Analysis
+# 📊 Loan Default Risk Analysis
 
 ## Executive Summary
 
@@ -6,13 +6,13 @@
 
 ### Key Next Steps
 
-## Business Problem Statement
+## 📌 Business Problem Statement
 Horizon Financial Group has issued over 600 personal loans across 2024 and 2025. The company has noticed that roughly 1 in 4 loans are defaulting, which is well above their target of 12%. Management is concerned about the rising default rate on personal loans and wants data-driven insights to improve the underwriting process.
 
-## Objective
+## 🎯 Objective
 To analyze borrower demographics, loan characteristics, and repayment outcomes to identify the key risk factors that predict loan defaults.
 
-## Methodology & Tools
+## 🛠️ Tools
 
 ### Data Source :
 Source : [analystbuilder.com](https://www.analystbuilder.com/projects/loan-default-risk-analysis-Vjfdl?tab=overview) 
@@ -32,7 +32,7 @@ Dataset composition :
 
 - **CSV data files** : Standardized data format for analysis and integration
 
-### Workflow :
+## 📂 Methodology
 **Phase 1 : Database Initialization, Table Creation and EDA**
 - created a database and uploaded both CSV files.
 - checked for nulls, invalid dates, negative numbers and unwanted white spaces.
@@ -61,7 +61,9 @@ Created risk segments based on
 
 # Results & Business Recommendations
 
-## Key Insights & Results
+## 📈 Key Insights & Results
 
-## Business Recommendations
+## 📊 Business Recommendations
+
+## 🚀 Future Improvements
 
