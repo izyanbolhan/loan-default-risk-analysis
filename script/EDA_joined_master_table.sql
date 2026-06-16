@@ -7,8 +7,7 @@ FROM loan_applications;
 /*------------------------------------------------------------------------------
 To check any duplicates in loan_id
 --------------------------------------------------------------------------------*/
-SELECT
-loan_id,
+SELECT loan_id,
 COUNT (*)
 FROM loan_applications
 GROUP BY loan_id
@@ -19,8 +18,7 @@ HAVING COUNT (*) > 1
 /*------------------------------------------------------------------------------
  To check is there any NULL in loan_id 
 --------------------------------------------------------------------------------*/
-SELECT
-loan_id
+SELECT loan_id
 FROM loan_applications
 WHERE loan_id IS NOT NULL
 --Result : no NULL found in loan_id
@@ -28,13 +26,11 @@ WHERE loan_id IS NOT NULL
 /*------------------------------------------------------------------------------
  To check any unwanted white spaces
 --------------------------------------------------------------------------------*/
-SELECT
-loan_id
+SELECT loan_id
 FROM loan_applications
 WHERE loan_id != TRIM (loan_id);
 
-SELECT
-borrower_id
+SELECT borrower_id
 FROM loan_applications
 WHERE borrower_id != TRIM (borrower_id);
 
@@ -111,8 +107,7 @@ FROM borrower_profiles;
 /*------------------------------------------------------------------------------
 To check any duplicate in borrower_id
 --------------------------------------------------------------------------------*/
-SELECT
-borrower_id,
+SELECT borrower_id,
 COUNT (*)
 FROM borrower_profiles
 GROUP BY borrower_id
