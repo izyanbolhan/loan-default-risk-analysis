@@ -62,6 +62,19 @@ Created risk segments based on
 # Results & Business Recommendations
 
 ## 📈 Key Insights & Results
+The overall default rate across all loan application is 24.29%.
+1. Credit Score
+- high risk segment : The highest default rate coming from credit score '520-599' around 49.14%.
+- low risk segment : The default rate decreases as the credit score increases more than 600+ range from 12% to 29%.
+
+2. Debt-to-Income Ratio
+- there is a clear correlation between DTI ratio to default rate.
+- borrowers coming from lower DTI range (eg. 30-39) shows lower default rate around 12%. However, the highest default rate (33%) is coming from DTI more than 50+.
+- the cut-off DTI recommendation for loan approval should be less than 40%.
+
+3. Loan Purpose
+- the top 3 highest default rate goes to wedding (32.14%), home improvement (28.57%) and automotive loan (27.12%).
+-  the average loan amount comparison between defaulted and non-defaulted
 
 ## 📊 Business Recommendations
 
