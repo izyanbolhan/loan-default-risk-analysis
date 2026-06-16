@@ -1,19 +1,21 @@
 # Loan Default Risk Analysis
 
+## Executive Summary
+
+### Business Impact
+
+### Key Next Steps
+
 ## Business Problem Statement
 Horizon Financial Group has issued over 600 personal loans across 2024 and 2025. The company has noticed that roughly 1 in 4 loans are defaulting, which is well above their target of 12%. Management is concerned about the rising default rate on personal loans and wants data-driven insights to improve the underwriting process.
 
 ## Objective
 To analyze borrower demographics, loan characteristics, and repayment outcomes to identify the key risk factors that predict loan defaults.
 
-## Data Summary
-
-
-
 ## Methodology & Tools
 
 ### Data Source :
-Source : analystbuilder.com
+Source : [analystbuilder.com](https://www.analystbuilder.com/projects/loan-default-risk-analysis-Vjfdl?tab=overview) 
 
 Data Coverage : Historical loan application and borrower profile data
 
@@ -31,13 +33,33 @@ Dataset composition :
 - **CSV data files** : Standardized data format for analysis and integration
 
 ### Workflow :
-1. Created a database and uploaded both CSV files. Checked for nulls, invalid dates, negative numbers and unwanted white spaces. Joined the two tables based on primary key (borrower_id).
-2. Segment analysis : Created credit score, Debt-to-Income (DTI), interest rate and years employed buckets and calculate default rates for each segment.
-   Default Rate % = Total loan/total default * 100
-3. Correlation Analysis : Identified which numeric variables (credit score, DTI, income, loan amount, interest rate) have the strongest correlation with defaults.
-4. Visualization: Built charts showing default rate by credit score range, a scatter plot of DTI vs. default status, and a bar chart comparing loan purposes.
-5. Outcomes Overall Default Rate: The overall default rate across all loan applications is 24.29%.
+**Phase 1 : Database Initialization, Table Creation and EDA**
+- created a database and uploaded both CSV files.
+- checked for nulls, invalid dates, negative numbers and unwanted white spaces.
+- joined the two tables based on primary key (borrower_id) to create master table.
+  
+**Phase 2 : Segment Analysis**
+Created risk segments based on
+- credit score tiers (<520, 520-500, 600-649, 650-699, 700-749, 750+)
+- debt-to-income ratios (<20, 20-29, 30-39, 40-49, 50-59, 60+)
+- interest rate tiers (06-08, 09-10, 11-12, 13-14, 15+
+- years employed bucket (<2, 3-5, 6-10, 11-15, 16+)
+- segmented by loan purpose categories (Wedding, etc) and employment (Part-time, etc)
 
+**Phase 3 : Correlation Analysis** 
+- Examinedd default rates across each segment
+- indentified patterns and correlation between borrowers characteristics and default behaviour
+- calculate default rate percentage by comparative analysis
+  Default Rate % = (Total Nr. of Loan / Total Nr. of Defaults) * 100
+- evaluated segment performance metrics
+
+**Phase 4 : Visualization & Reporting**  
+- created comprehensive dashboards in Power BI
+- visualized default rates by each segment
+- developed comparative analysis charts
+- produced actionable insights and recommendations
+
+# Results & Business Recommendations
 
 ## Key Insights & Results
 
