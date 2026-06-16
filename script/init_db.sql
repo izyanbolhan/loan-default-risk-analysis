@@ -1,12 +1,15 @@
---Create Database 'LoanRiskProject'
+/*------------------------------------------------------------------------------
+Create Database 'LoanRiskProject'
+--------------------------------------------------------------------------------*/
 USE master;
 
 CREATE DATABASE LoanRiskProject;
 
 USE LoanRiskProject;
 
-
---Create table : Loan Applications
+/*------------------------------------------------------------------------------
+Create table : Loan Applications
+--------------------------------------------------------------------------------*/
 IF OBJECT_ID ('loan_applications', 'U') IS NOT NULL
 	DROP TABLE loan_applications;
 
@@ -24,8 +27,9 @@ CREATE TABLE loan_applications (
 	days_delinquent INT,
 	defaulted INT
 	);
-
---Create table : Borrower Profiles
+/*------------------------------------------------------------------------------
+Create table : Borrower Profiles
+--------------------------------------------------------------------------------*/
 IF OBJECT_ID ('borrower_profiles', 'U') IS NOT NULL
 	DROP TABLE borrower_profiles;
 
@@ -43,8 +47,10 @@ CREATE TABLE borrower_profiles (
 	existing_monthly_debt INT
 	);
 
+/*------------------------------------------------------------------------------
+Upload loan_applications.csv file into Loan Applications table
+--------------------------------------------------------------------------------*/
 
---to upload csv file into Loan Applications table
 BULK INSERT loan_applications
 FROM 'C:\Users\bizyan\Desktop\Data Analyst\Project\Loan Default Risk Analysis\datasets\loan_applications.csv'
 	WITH (
@@ -53,7 +59,9 @@ FROM 'C:\Users\bizyan\Desktop\Data Analyst\Project\Loan Default Risk Analysis\da
 		TABLOCK
 		);
 
---to upload csv file into borrower_profiles table
+/*------------------------------------------------------------------------------
+upload borrower_profiles.csv file into borrower_profiles table
+--------------------------------------------------------------------------------*/
 BULK INSERT borrower_profiles
 FROM 'C:\Users\bizyan\Desktop\Data Analyst\Project\Loan Default Risk Analysis\datasets\borrower_profiles.csv'
 	WITH (
