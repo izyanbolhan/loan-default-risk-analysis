@@ -2,9 +2,9 @@
 
 ## Executive Summary
 
-### Business Impact
+### 📈 Business Impact
 
-### Key Next Steps
+### 🚀 Key Next Steps
 
 ## 📌 Business Problem Statement
 Horizon Financial Group has issued over 600 personal loans across 2024 and 2025. The company has noticed that roughly 1 in 4 loans are defaulting, which is well above their target of 12%. Management is concerned about the rising default rate on personal loans and wants data-driven insights to improve the underwriting process.
@@ -47,11 +47,11 @@ Created risk segments based on
 - segmented by loan purpose categories (Wedding, etc) and employment (Part-time, etc)
 
 **Phase 3 : Correlation Analysis** 
-- Examinedd default rates across each segment
-- indentified patterns and correlation between borrowers characteristics and default behaviour
-- calculate default rate percentage by comparative analysis
+- examined default rates across each segment.
+- indentified patterns and correlation between borrowers characteristics and default behaviour.
+- calculated default rate percentage by comparative analysis.
   Default Rate % = (Total Nr. of Loan / Total Nr. of Defaults) * 100
-- evaluated segment performance metrics
+- evaluated segment performance metrics.
 
 **Phase 4 : Visualization & Reporting**  
 - created comprehensive dashboards in Power BI
