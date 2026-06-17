@@ -6,7 +6,7 @@ CREATE OR ALTER VIEW overall_default_rate AS
 SELECT
 COUNT (*) AS overall_total_loans,
 SUM (defaulted) AS overall_total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS overall_default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS overall_default_rate_percentage
 FROM overall_join
 
 /*------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ CASE
 END AS score_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY
 CASE
@@ -53,7 +53,7 @@ CASE
 END AS dti_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY
 CASE
@@ -76,10 +76,9 @@ SELECT
 loan_purpose,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY loan_purpose
-ORDER BY ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4)
 
 /*------------------------------------------------------------------------------
 Query to calculate avg_loan_amount differ from defaulted and non-defaulted by loan purpose & table view creation
@@ -96,7 +95,6 @@ defaulted,
 ROUND (AVG (loan_amount),2) AS avg_loan_amount
 FROM overall_join
 GROUP BY  loan_purpose, defaulted
-ORDER BY loan_purpose, defaulted
 )t
 
 /*------------------------------------------------------------------------------
@@ -107,7 +105,7 @@ SELECT
 employment,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY employment
 
@@ -125,7 +123,7 @@ CASE
 END AS age_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY
 CASE 
@@ -152,7 +150,7 @@ CASE
 END AS years_employed_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY
 CASE
@@ -179,7 +177,7 @@ CASE
 END AS interest_rate_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
-ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT)))*100,2) AS default_rate_percentage
 FROM overall_join
 GROUP BY
 CASE
