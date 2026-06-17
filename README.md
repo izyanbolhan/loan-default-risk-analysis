@@ -21,9 +21,9 @@ Data Coverage : Historical loan application and borrower profile data
 
 Dataset composition :
 
-- **loan_application.csv** - consist of loan request details, application status and default indicators
+- `loan_applications.csv` - consist of loan request details, application status and default indicators
 
-- **borrower_profiles.csv** - consist of demographic, credit and employment information
+- `borrower_profiles.csv` - consist of demographic, credit and employment information
 
 ### Tools :
 - **SQL** : Data extraction, transformation and aggregation
@@ -74,9 +74,29 @@ The overall default rate across all loan application is 24.29%.
 
 3. Loan Purpose
 - the top 3 highest default rate goes to wedding (32.14%), home improvement (28.57%) and automotive loan (27.12%).
--  the average loan amount comparison between defaulted and non-defaulted
+- the average loan amount comparison between defaulted and non-defaulted
+
+4. Employment Status
 
 ## 📊 Business Recommendations
 
 ## 🚀 Future Improvements
+
+## Project Structure
+```
+loan-default-risk-analysis/
+├── README.md                         # Project documentation (this file)
+├── script                            # Folder contains SQL scripts
+  ├── init_db.sql                     # Initialization for database and table
+  ├── EDA_joined_master_table.sql     # EDA checking and creating master table
+  ├── loan_analysis_queries.sql       # Main SQL analytical views
+├── datasets                          # Folder contains the datasets
+  ├── loan_applications.csv           # Loan application data
+  │   ├── Contains: loan_id, borrower_id, application_date, loan_purpose, loan_amount, term_months, interest_rate, monthly_payment, dti_ratio, loan_status, days_delinquent, defaulted
+  │   └── Records: Historical loan request information
+  ├── borrower_profiles.csv           # Borrower demographic & credit data
+  │   ├── Contains: borrower_id, age, state, education, employment, years_employed, annual_income, credit_score, home_ownership, dependents, existing_monthly_debt
+  │   └── Records: Borrower profile information linked to applications
+└── visualization
+```
 
