@@ -41,12 +41,15 @@ Query to calculate default rate by dti ratio & table view creation
 CREATE OR ALTER VIEW dti_ratio_default_rate AS
 SELECT 
 CASE
-	WHEN dti_ratio < 21 THEN '<20'
-	WHEN dti_ratio < 31 THEN '20-29'
-	WHEN dti_ratio < 41 THEN '30-39'
-	WHEN dti_ratio < 51 THEN '40-49'
-	WHEN dti_ratio < 61 THEN '50-59'
-	ELSE '60+'
+	WHEN dti_ratio < 20 THEN '<20'
+	WHEN dti_ratio < 30 THEN '20-29'
+	WHEN dti_ratio < 40 THEN '30-39'
+	WHEN dti_ratio < 50 THEN '40-49'
+	WHEN dti_ratio < 60 THEN '50-59'
+	WHEN dti_ratio < 70 THEN '60-69'
+	WHEN dti_ratio < 80 THEN '70-79'
+	WHEN dti_ratio < 90 THEN '80-89'
+	ELSE '90+'
 END AS dti_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
@@ -54,12 +57,15 @@ ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS defau
 FROM overall_join
 GROUP BY
 CASE
-	WHEN dti_ratio < 21 THEN '<20'
-	WHEN dti_ratio < 31 THEN '20-29'
-	WHEN dti_ratio < 41 THEN '30-39'
-	WHEN dti_ratio < 51 THEN '40-49'
-	WHEN dti_ratio < 61 THEN '50-59'
-	ELSE '60+'
+	WHEN dti_ratio < 20 THEN '<20'
+	WHEN dti_ratio < 30 THEN '20-29'
+	WHEN dti_ratio < 40 THEN '30-39'
+	WHEN dti_ratio < 50 THEN '40-49'
+	WHEN dti_ratio < 60 THEN '50-59'
+	WHEN dti_ratio < 70 THEN '60-69'
+	WHEN dti_ratio < 80 THEN '70-79'
+	WHEN dti_ratio < 90 THEN '80-89'
+	ELSE '90+'
 END
 
 /*------------------------------------------------------------------------------
@@ -111,10 +117,10 @@ Query to calculate default rate by age & table view creation
 CREATE OR ALTER VIEW age_default_rate AS
 SELECT 
 CASE 
-	WHEN age <31 THEN '<30'
-	WHEN age <41 THEN '31-40'
-	WHEN age <51 THEN '41-50'
-	WHEN age <61 THEN '51-60'
+	WHEN age <30 THEN '20-29'
+	WHEN age <40 THEN '30-39'
+	WHEN age <50 THEN '40-49'
+	WHEN age <60 THEN '50-59'
 	ELSE '60+'
 END AS age_bucket,
 COUNT (*) AS total_loans,
@@ -123,12 +129,12 @@ ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS defau
 FROM overall_join
 GROUP BY
 CASE 
-	WHEN age <31 THEN '<30'
-	WHEN age <41 THEN '31-40'
-	WHEN age <51 THEN '41-50'
-	WHEN age <61 THEN '51-60'
+	WHEN age <30 THEN '20-29'
+	WHEN age <40 THEN '30-39'
+	WHEN age <50 THEN '40-49'
+	WHEN age <60 THEN '50-59'
 	ELSE '60+'
-END 
+END
 
 /*------------------------------------------------------------------------------
 Query to calculate default rate by years_employed & table view creation
@@ -136,11 +142,13 @@ Query to calculate default rate by years_employed & table view creation
 CREATE OR ALTER VIEW years_employed_default_rate AS
 SELECT
 CASE
-	WHEN years_employed < 3 THEN '00-02'
-	WHEN years_employed < 6 THEN '03-05'
-	WHEN years_employed < 11 THEN '06-10'
-	WHEN years_employed < 16 THEN '11-15'
-	ELSE '16+'
+	WHEN years_employed <6 THEN '00-05'
+	WHEN years_employed <11 THEN '06-10'
+	WHEN years_employed <16 THEN '11-15'
+	WHEN years_employed <21 THEN '16-20'
+	WHEN years_employed <26 THEN '21-25'
+	WHEN years_employed <31 THEN '26-30'
+	ELSE '31+'
 END AS years_employed_bucket,
 COUNT (*) AS total_loans,
 SUM (defaulted) AS total_defaults,
@@ -148,9 +156,36 @@ ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS defau
 FROM overall_join
 GROUP BY
 CASE
-	WHEN years_employed < 3 THEN '00-02'
-	WHEN years_employed < 6 THEN '03-05'
-	WHEN years_employed < 11 THEN '06-10'
-	WHEN years_employed < 16 THEN '11-15'
-	ELSE '16+'
+	WHEN years_employed <6 THEN '00-05'
+	WHEN years_employed <11 THEN '06-10'
+	WHEN years_employed <16 THEN '11-15'
+	WHEN years_employed <21 THEN '16-20'
+	WHEN years_employed <26 THEN '21-25'
+	WHEN years_employed <31 THEN '26-30'
+	ELSE '31+'
 END
+
+/*------------------------------------------------------------------------------
+Query to calculate default rate by interest rate & table view creation
+--------------------------------------------------------------------------------*/
+CREATE OR ALTER VIEW interest_rate_default_rate AS
+SELECT
+CASE
+	WHEN interest_rate < 8 THEN '05-07'
+	WHEN interest_rate < 11 THEN '08-10'
+	WHEN interest_rate < 14 THEN '11-13'
+	WHEN interest_rate < 17 THEN '14-16'
+	ELSE '17+'
+END AS interest_rate_bucket,
+COUNT (*) AS total_loans,
+SUM (defaulted) AS total_defaults,
+ROUND ((CAST (SUM (defaulted) AS FLOAT)/(CAST (COUNT (*) AS FLOAT))),4) AS default_rate_percentage
+FROM overall_join
+GROUP BY
+CASE
+	WHEN interest_rate < 8 THEN '05-07'
+	WHEN interest_rate < 11 THEN '08-10'
+	WHEN interest_rate < 14 THEN '11-13'
+	WHEN interest_rate < 17 THEN '14-16'
+	ELSE '17+'
+END;
